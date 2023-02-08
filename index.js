@@ -14,7 +14,7 @@ const recordZipCodeCount = async () => {
         } else {
             prefix = ''
         }
-
+        console.log(prefix + i)
         /* read data from csv files and store in customers array */
         let customers = await csv().fromFile(`./data/Group${prefix + i}.csv`)
 
@@ -37,7 +37,7 @@ const recordZipCodeCount = async () => {
     let header = Object.keys(zipCodes[0]).join(',')
     let values = zipCodes.map(z => Object.values(z).join(',')).join('\n')
     let csvText = header + '\n' + values
-
+    console.log(csvText)
     /* write output to csv file */
     fs.writeFileSync('./data/ZipCodeCount.csv', csvText)
 }
